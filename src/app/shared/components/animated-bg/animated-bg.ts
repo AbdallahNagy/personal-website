@@ -29,7 +29,7 @@ export class AnimatedBg implements OnInit, OnDestroy {
   private ctx!: CanvasRenderingContext2D;
   private squares: Square[] = [];
   private rafId = 0;
-  private readonly COUNT = 28;
+  private readonly COUNT = 55;
 
   ngOnInit() {
     const canvas = this.canvasRef.nativeElement;
@@ -60,12 +60,12 @@ export class AnimatedBg implements OnInit, OnDestroy {
     return {
       x: random ? Math.random() * w : Math.random() < 0.5 ? -20 : w + 20,
       y: random ? Math.random() * h : Math.random() * h,
-      size: 12 + Math.random() * 14,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      opacity: 0.03 + Math.random() * 0.07,
+      size: 10 + Math.random() * 22,
+      vx: (Math.random() - 0.5) * 0.9,
+      vy: (Math.random() - 0.5) * 0.9,
+      opacity: 0.07 + Math.random() * 0.13,
       rotation: Math.random() * Math.PI * 2,
-      vr: (Math.random() - 0.5) * 0.004,
+      vr: (Math.random() - 0.5) * 0.01,
     };
   }
 
