@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Navbar } from './components/navbar/navbar';
-import { AnimatedBg } from './components/animated-bg/animated-bg';
+import { Navbar } from './shared/components/navbar/navbar';
+import { AnimatedBg } from './shared/components/animated-bg/animated-bg';
 
 @Component({
   selector: 'app-root',
