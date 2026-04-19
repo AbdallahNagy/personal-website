@@ -1,0 +1,18 @@
+<nav [class.hidden]="hidden()">
+  <div class="inner">
+    <a class="brand" (click)="scrollTo('about')">Abdallah Nagy</a>
+
+    <ul class="links">
+      @for (link of links; track link.id) {
+        <li>
+          <button
+            [class.active]="activeSection() === link.id"
+            (click)="scrollTo(link.id)"
+          >
+            {{ link.label }}
+          </button>
+        </li>
+      }
+    </ul>
+  </div>
+</nav>

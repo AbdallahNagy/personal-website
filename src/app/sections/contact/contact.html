@@ -1,0 +1,53 @@
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact</h2>
+
+    <div class="layout">
+      <div class="info">
+        <p class="tagline">Want to work together or just say hi?</p>
+        <a [href]="'mailto:' + emailAddress" class="email">
+          {{ emailAddress }}
+        </a>
+
+        <div class="socials">
+          @for (social of socials; track social.label) {
+            <a [href]="social.href" target="_blank" rel="noopener" class="social-link">
+              {{ social.label }}
+            </a>
+          }
+        </div>
+      </div>
+
+      <form class="form" (ngSubmit)="onSubmit()" #f="ngForm">
+        @if (submitted()) {
+          <div class="success">Message sent — I'll get back to you soon.</div>
+        } @else {
+          <div class="fields">
+            <input
+              type="text"
+              placeholder="Name"
+              [(ngModel)]="name"
+              name="name"
+              required
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              [(ngModel)]="email"
+              name="email"
+              required
+            />
+            <textarea
+              placeholder="Message"
+              [(ngModel)]="message"
+              name="message"
+              rows="5"
+              required
+            ></textarea>
+            <button type="submit">Send Message</button>
+          </div>
+        }
+      </form>
+    </div>
+  </div>
+</section>
