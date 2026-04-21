@@ -27,7 +27,7 @@ export class Projects {
       description:
         'Full-stack e-commerce platform with essential shopping features including product catalog, shopping cart, user authentication, and order management. Built with Angular and Node.js/MongoDB backend.',
       tags: ['Angular', 'Node.js', 'MongoDB'],
-      github: 'https://github.com/AbdallahNagy/ECommerceWebApp',
+      github: 'https://github.com/AbdallahNagy/E-Commerce-Project',
     },
   ];
 }
