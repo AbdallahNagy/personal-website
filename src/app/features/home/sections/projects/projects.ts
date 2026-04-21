@@ -16,24 +16,18 @@ export interface Project {
 export class Projects {
   readonly projects: Project[] = [
     {
-      title: 'Project One',
-      description: 'A full-stack web application with real-time features, built with Angular and .NET Core.',
-      tags: ['Angular', '.NET', 'PostgreSQL', 'Docker'],
-      github: '#',
-      live: '#',
+      title: 'Power Tools',
+      description:
+        'Cross-platform desktop application providing developer utilities for Dynamics 365, including data migration, plugin registration, and automation tools. Built with Electron and Node.js for seamless performance.',
+      tags: ['Electron', 'React', '.NET Core'],
+      github: 'https://github.com/AbdallahNagy/PowerTools',
     },
     {
-      title: 'Project Two',
-      description: 'REST API service with authentication, caching, and automated deployment pipeline.',
-      tags: ['Node.js', 'TypeScript', 'Redis', 'Azure'],
-      github: '#',
-    },
-    {
-      title: 'Project Three',
-      description: 'Open source CLI tool for automating development workflows.',
-      tags: ['TypeScript', 'Node.js', 'Shell'],
-      github: '#',
-      live: '#',
+      title: 'E-Commerce web app',
+      description:
+        'Full-stack e-commerce platform with essential shopping features including product catalog, shopping cart, user authentication, and order management. Built with Angular and Node.js/MongoDB backend.',
+      tags: ['Angular', 'Node.js', 'MongoDB'],
+      github: 'https://github.com/AbdallahNagy/ECommerceWebApp',
     },
   ];
 }

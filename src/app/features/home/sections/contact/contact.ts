@@ -16,8 +16,8 @@ export class Contact {
   readonly emailAddress = 'abdallahnagy773@gmail.com';
 
   readonly socials = [
-    { label: 'GitHub',   href: '#', icon: 'github' },
-    { label: 'LinkedIn', href: '#', icon: 'linkedin' },
+    { label: 'GitHub',   href: 'https://github.com/AbdallahNagy', icon: 'github' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abdallahnagy/', icon: 'linkedin' },
   ];
 
   onSubmit() {

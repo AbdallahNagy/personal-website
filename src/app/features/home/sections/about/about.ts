@@ -7,8 +7,17 @@ import { Component } from '@angular/core';
 })
 export class About {
   readonly skills = [
-    'TypeScript', 'Angular', 'React', 'Node.js',
-    '.NET', 'C#', 'SQL', 'PostgreSQL',
-    'Docker', 'Git', 'REST APIs', 'Azure',
+    'Node.js',
+    'Angular',
+    'React',
+    'Typescript',
+    '.NET Core',
+    'C#',
+    'PostgreSQL',
+    'MongoDB',
+    'Redis',
+    'Docker',
+    'Git',
+    'REST APIs',
   ];
 }
