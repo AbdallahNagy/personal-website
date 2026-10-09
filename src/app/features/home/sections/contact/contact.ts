@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 // Free form-to-email service (https://web3forms.com). The access key is public
 // by design — it only lets this form deliver messages to your inbox.
 // Leave empty to fall back to opening the visitor's email app.
-const WEB3FORMS_ACCESS_KEY = '';
+const WEB3FORMS_ACCESS_KEY = '2a412438-bc5b-4b48-8a7a-881849c9f9a5';
 
 type Status = 'idle' | 'sending' | 'sent' | 'mailto' | 'error';
 
