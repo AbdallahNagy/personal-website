@@ -6,18 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './about.scss',
 })
 export class About {
-  readonly skills = [
-    'Node.js',
-    'Angular',
-    'React',
-    'Typescript',
-    '.NET Core',
-    'C#',
-    'PostgreSQL',
-    'MongoDB',
-    'Redis',
-    'Docker',
-    'Git',
-    'REST APIs',
-  ];
+  readonly skills = ['Power Platform', '.NET', 'Angular'];
+
+  scrollTo(id: string) {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  }
 }
