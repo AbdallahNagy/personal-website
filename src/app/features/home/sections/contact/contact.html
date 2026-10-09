@@ -4,7 +4,9 @@
 
     <div class="layout">
       <div class="info">
-        <p class="tagline">Want to work together or just say hi?</p>
+        <p class="tagline">
+          Hiring, need a freelancer for a project, or just want to say hi? My inbox is open.
+        </p>
         <a [href]="'mailto:' + emailAddress" class="email">
           {{ emailAddress }}
         </a>
@@ -19,33 +21,69 @@
       </div>
 
       <form class="form" (ngSubmit)="onSubmit()" #f="ngForm">
-        @if (submitted()) {
-          <div class="success">Message sent — I'll get back to you soon.</div>
-        } @else {
-          <div class="fields">
-            <input
-              type="text"
-              placeholder="Name"
-              [(ngModel)]="name"
-              name="name"
-              required
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              [(ngModel)]="email"
-              name="email"
-              required
-            />
-            <textarea
-              placeholder="Message"
-              [(ngModel)]="message"
-              name="message"
-              rows="5"
-              required
-            ></textarea>
-            <button type="submit">Send Message</button>
-          </div>
+        @switch (status()) {
+          @case ('sent') {
+            <div class="success" role="status">Thanks! Your message was sent — I'll get back to you soon.</div>
+          }
+          @case ('mailto') {
+            <div class="success" role="status">
+              Your email app should have opened with the message ready — just hit send.
+              If nothing opened, email me directly at
+              <a [href]="'mailto:' + emailAddress">{{ emailAddress }}</a>.
+            </div>
+          }
+          @default {
+            <div class="fields">
+              <label class="visually-hidden" for="contact-name">Name</label>
+              <input
+                id="contact-name"
+                type="text"
+                placeholder="Name"
+                autocomplete="name"
+                [(ngModel)]="name"
+                name="name"
+                required
+              />
+              <label class="visually-hidden" for="contact-email">Email</label>
+              <input
+                id="contact-email"
+                type="email"
+                placeholder="Email"
+                autocomplete="email"
+                [(ngModel)]="email"
+                name="email"
+                required
+              />
+              <label class="visually-hidden" for="contact-message">Message</label>
+              <textarea
+                id="contact-message"
+                placeholder="Message"
+                [(ngModel)]="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+              <!-- Spam honeypot: hidden from people, filled in by bots -->
+              <input
+                type="checkbox"
+                class="visually-hidden"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+                [(ngModel)]="botcheck"
+                name="botcheck"
+              />
+              @if (status() === 'error') {
+                <p class="error" role="alert">
+                  Something went wrong sending your message. Please email me directly at
+                  <a [href]="'mailto:' + emailAddress">{{ emailAddress }}</a>.
+                </p>
+              }
+              <button type="submit" [disabled]="status() === 'sending'">
+                {{ status() === 'sending' ? 'Sending…' : 'Send Message' }}
+              </button>
+            </div>
+          }
         }
       </form>
     </div>

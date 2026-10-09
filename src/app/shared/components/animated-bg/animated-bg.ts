@@ -2,9 +2,9 @@ import {
   Component,
   ElementRef,
   OnDestroy,
-  OnInit,
   ViewChild,
   HostListener,
+  afterNextRender,
 } from '@angular/core';
 
 interface Square {
@@ -23,7 +23,7 @@ interface Square {
   templateUrl: './animated-bg.html',
   styleUrl: './animated-bg.scss',
 })
-export class AnimatedBg implements OnInit, OnDestroy {
+export class AnimatedBg implements OnDestroy {
   @ViewChild('canvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
 
   private ctx!: CanvasRenderingContext2D;
@@ -31,16 +31,19 @@ export class AnimatedBg implements OnInit, OnDestroy {
   private rafId = 0;
   private readonly COUNT = 55;
 
-  ngOnInit() {
-    const canvas = this.canvasRef.nativeElement;
-    this.ctx = canvas.getContext('2d')!;
-    this.resize();
-    this.initSquares();
-    this.animate();
+  constructor() {
+    // Browser-only: skipped during build-time pre-rendering
+    afterNextRender(() => {
+      const canvas = this.canvasRef.nativeElement;
+      this.ctx = canvas.getContext('2d')!;
+      this.resize();
+      this.initSquares();
+      this.animate();
+    });
   }
 
   ngOnDestroy() {
-    cancelAnimationFrame(this.rafId);
+    if (this.rafId) cancelAnimationFrame(this.rafId);
   }
 
   @HostListener('window:resize')
