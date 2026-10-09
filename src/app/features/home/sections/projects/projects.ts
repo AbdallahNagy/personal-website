@@ -29,19 +29,17 @@ export class Projects {
     description:
       'An open-source Windows desktop toolkit that brings migration, FetchXML, plug-in registration and metadata work into one workspace. Each tool opens in its own tab and keeps its own state, so you can work across environments without losing context.',
     highlights: [
+      'Modern UI with great usability — easy to figure out without reading docs.',
+      'Lightweight and fast, not bloated, and stable enough to rely on every day.',
       'Your data stays local — the app talks to Dataverse directly from your machine through a local API bound to 127.0.0.1.',
       'Connects to Online environments with Microsoft sign-in, and to on-premises with Active Directory or IFD.',
-      'One-click Windows installer, and the app checks for new releases on its own.',
-      'CI on Windows type-checks, lints with zero warnings, runs unit tests and an Electron smoke test.',
     ],
     tools: [
       { name: 'Data Migration', description: 'Move data between environments with a guided workflow.' },
       { name: 'Plugin Registration', description: 'Manage assemblies, types, steps and images.' },
       { name: 'FetchXML Builder', description: 'Build, run and refine FetchXML queries.' },
-      { name: 'FetchXML Tester', description: 'Run queries as written and keep a query library.' },
       { name: 'Attribute Explorer', description: 'Inspect every table, field, type and lookup.' },
       { name: 'Polymorphic Lookup Creator', description: 'Create, update and delete polymorphic lookups.' },
-      { name: 'Workflow Activities Viewer', description: 'Find processes that use a custom workflow activity.' },
     ],
     stack: ['Electron', 'React', 'TypeScript', 'ASP.NET Core', '.NET 9', 'Dataverse'],
     website: 'https://powertools.abdallahnagy.com/',
