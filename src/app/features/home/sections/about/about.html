@@ -3,18 +3,25 @@
     <div class="hero">
       <p class="greeting">Hello, I'm</p>
       <h1>Abdallah Nagy</h1>
-      <h2>Full Stack Developer</h2>
+      <h2>Senior Dynamics Developer</h2>
       <p class="bio">
-        I love turning complex problems into
-        elegant solutions. From crafting intuitive interfaces to architecting
-        scalable backend systems, I focus on building software that actually
-        solves real problems and delights users.
+        For more than 3 years I've been building on Dynamics 365, .NET and Angular,
+        helping businesses reach their goals by crafting solutions that fit how they
+        actually work — from Dataverse customizations and plug-ins to the APIs and
+        portals around them.
       </p>
 
       <div class="skills">
         @for (skill of skills; track skill) {
         <span class="tag">{{ skill }}</span>
         }
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn primary" (click)="scrollTo('projects')">
+          See Power Tools
+        </button>
+        <button type="button" class="btn" (click)="scrollTo('contact')">Get in touch</button>
       </div>
     </div>
   </div>

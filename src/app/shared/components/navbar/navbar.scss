@@ -9,12 +9,6 @@ nav {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  transform: translateY(0);
-  transition: transform 300ms var(--ease);
-
-  &.hidden {
-    transform: translateY(-100%);
-  }
 }
 
 .inner {
@@ -63,6 +57,161 @@ nav {
   }
 }
 
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hire {
+  padding: 7px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--text-1);
+  color: var(--bg);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background var(--dur) var(--ease);
+
+  &:hover {
+    background: #ffffff;
+  }
+}
+
+/* ─── Hire me dialog ─────────────────────────────────────────────────── */
+.hire-dialog {
+  margin: auto;
+  width: min(480px, calc(100vw - 32px));
+  padding: 0;
+  background: var(--surface);
+  color: var(--text-1);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+  }
+}
+
+.dialog-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 28px;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+
+  p {
+    font-size: 0.875rem;
+    color: var(--text-2);
+    line-height: 1.6;
+  }
+
+  h3 {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-2);
+    margin-bottom: 10px;
+  }
+}
+
+.close {
+  flex-shrink: 0;
+  color: var(--text-2);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+
+  &:hover {
+    color: var(--text-1);
+    background: var(--surface-2);
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.email-row {
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px 10px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.email {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  word-break: break-all;
+
+  &:hover {
+    color: var(--text-2);
+  }
+}
+
+.btn {
+  flex: 1;
+  display: inline-flex;
+  justify-content: center;
+  padding: 10px 16px;
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  color: var(--text-1);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background var(--dur) var(--ease);
+
+  &:hover {
+    background: var(--surface-2);
+  }
+
+  &.primary {
+    background: var(--text-1);
+    border-color: var(--text-1);
+    color: var(--bg);
+
+    &:hover {
+      background: #ffffff;
+    }
+  }
+
+  &.small {
+    flex: 0 0 auto;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+.link {
+  align-self: flex-start;
+  color: var(--text-2);
+  font-size: 0.85rem;
+
+  &:hover {
+    color: var(--text-1);
+  }
+}
+
 /* Mobile */
 @media (max-width: 600px) {
   .brand {
@@ -72,5 +221,12 @@ nav {
   .links button {
     padding: 6px 10px;
     font-size: 0.8rem;
+  }
+}
+
+/* Small phones: section links don't fit next to "Hire me" */
+@media (max-width: 520px) {
+  .links {
+    display: none;
   }
 }

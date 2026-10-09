@@ -1,16 +1,23 @@
 import {
   Component,
+  ElementRef,
   OnDestroy,
-  HostListener,
   afterNextRender,
   signal,
+  viewChild,
 } from '@angular/core';
+
 const NAV_LINKS = [
   { label: 'About',      id: 'about' },
   { label: 'Experience', id: 'experience' },
   { label: 'Projects',   id: 'projects' },
   { label: 'Contact',    id: 'contact' },
 ] as const;
+
+// Drop the CV at public/cv.pdf — it is served from the site root.
+const CV_URL = '/cv.pdf';
+const CV_FILENAME = 'Abdallah-Nagy-CV.pdf';
+const EMAIL = 'abdallah@abdallahnagy.com';
 
 @Component({
   selector: 'app-navbar',
@@ -20,34 +27,51 @@ const NAV_LINKS = [
 })
 export class Navbar implements OnDestroy {
   readonly links = NAV_LINKS;
+  readonly cvUrl = CV_URL;
+  readonly cvFilename = CV_FILENAME;
+  readonly email = EMAIL;
 
-  hidden = signal(false);
   activeSection = signal('about');
+  copied = signal(false);
 
-  private lastScrollY = 0;
+  private dialog = viewChild.required<ElementRef<HTMLDialogElement>>('hireDialog');
   private observer!: IntersectionObserver;
 
   constructor() {
     // Browser-only: skipped during build-time pre-rendering
-    afterNextRender(() => {
-      this.lastScrollY = window.scrollY;
-      this.setupObserver();
-    });
+    afterNextRender(() => this.setupObserver());
   }
 
   ngOnDestroy() {
     this.observer?.disconnect();
   }
 
-  @HostListener('window:scroll')
-  onScroll() {
-    const y = window.scrollY;
-    this.hidden.set(y > this.lastScrollY && y > 80);
-    this.lastScrollY = y;
-  }
-
   scrollTo(id: string) {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  openHire() {
+    this.copied.set(false);
+    this.dialog().nativeElement.showModal();
+  }
+
+  closeHire() {
+    this.dialog().nativeElement.close();
+  }
+
+  // Clicks on the backdrop land on the <dialog> element itself
+  onDialogClick(event: MouseEvent) {
+    if (event.target === this.dialog().nativeElement) this.closeHire();
+  }
+
+  async copyEmail() {
+    try {
+      await navigator.clipboard.writeText(this.email);
+      this.copied.set(true);
+      setTimeout(() => this.copied.set(false), 2000);
+    } catch {
+      window.location.href = `mailto:${this.email}`;
+    }
   }
 
   private setupObserver() {

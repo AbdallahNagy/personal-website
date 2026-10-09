@@ -47,3 +47,34 @@ h2 {
   flex-wrap: wrap;
   gap: 8px;
 }
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.btn {
+  padding: 11px 22px;
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  color: var(--text-1);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+
+  &:hover {
+    background: var(--surface-2);
+  }
+
+  &.primary {
+    background: var(--text-1);
+    border-color: var(--text-1);
+    color: var(--bg);
+
+    &:hover {
+      background: #ffffff;
+    }
+  }
+}

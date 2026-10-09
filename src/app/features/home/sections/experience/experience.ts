@@ -15,21 +15,23 @@ export interface Job {
 export class Experience {
   readonly jobs: Job[] = [
     {
-      role: 'Senior Software Engineer',
+      role: 'Senior Microsoft CRM Dynamics Developer',
       company: 'Link Development',
       period: 'Jan 2025 — Present',
       bullets: [
-        'Upgraded our Angular project from v13 to v19 to leverage the latest framework features and improvements',
-        'Designed and implemented CI/CD pipelines using Azure DevOps to automate deployment of APIs and portal across multiple environments, reducing manual effort by 12% to 15% and enhancing deployment reliability',
+        'Developed and customized enterprise solutions using Microsoft Dynamics 365, Dataverse, Power Platform, C#, .NET Framework and JavaScript.',
+        'Built Dynamics 365 plugins, custom workflow activities, business processes and client-side customizations to automate business operations and enforce complex business rules.',
+        'Built automated CI/CD pipelines using Azure DevOps for API and portal deployments across all environments, reducing manual deployment effort by 10% and improving release consistency.',
+        'Upgraded our Angular project from v13 to v19 to leverage the latest framework features and improvements.',
       ],
     },
     {
-      role: 'Full Stack Developer',
+      role: 'Microsoft CRM Dynamics Developer',
       company: 'Link Development',
-      period: 'Jul 2023 — Jan 2025',
+      period: 'Jul 2023 — Dec 2024',
       bullets: [
-        'Built and maintained scalable web applications using Angular and .NET.',
-        'Developed reusable generic Angular components that are utilized across multiple services and modules throughout the application, enabling other developers to easily integrate common functionality.',
+        'Designed and implemented REST API integrations between Dynamics 365 and external systems, including data mapping, authentication, error handling and troubleshooting.',
+        'Designed and implemented Power Automate cloud flows to automate business processes, integrate Dataverse with external services, send notifications and reduce manual activities.',
       ],
     },
   ];
