@@ -34,10 +34,14 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npx @angular/cli@latest build --base-href "/"
+        run: npm run build
 
-      - name: Add .nojekyll
-        run: touch dist/portfolio/browser/.nojekyll
+      # .nojekyll: serve files as-is. 404.html: unknown URLs load the app
+      # shell, which redirects back to the home page.
+      - name: Prepare Pages output
+        run: |
+          touch dist/portfolio/browser/.nojekyll
+          cp dist/portfolio/browser/index.csr.html dist/portfolio/browser/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

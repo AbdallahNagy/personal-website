@@ -1,8 +1,8 @@
 import {
   Component,
-  OnInit,
   OnDestroy,
   HostListener,
+  afterNextRender,
   signal,
 } from '@angular/core';
 const NAV_LINKS = [
@@ -18,7 +18,7 @@ const NAV_LINKS = [
   styleUrl: './navbar.scss',
   imports: [],
 })
-export class Navbar implements OnInit, OnDestroy {
+export class Navbar implements OnDestroy {
   readonly links = NAV_LINKS;
 
   hidden = signal(false);
@@ -27,9 +27,12 @@ export class Navbar implements OnInit, OnDestroy {
   private lastScrollY = 0;
   private observer!: IntersectionObserver;
 
-  ngOnInit() {
-    this.lastScrollY = window.scrollY;
-    this.setupObserver();
+  constructor() {
+    // Browser-only: skipped during build-time pre-rendering
+    afterNextRender(() => {
+      this.lastScrollY = window.scrollY;
+      this.setupObserver();
+    });
   }
 
   ngOnDestroy() {
