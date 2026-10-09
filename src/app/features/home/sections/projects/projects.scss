@@ -154,6 +154,16 @@ h4 {
   }
 }
 
+.more a {
+  font-size: 0.85rem;
+  color: var(--text-2);
+  transition: color var(--dur) var(--ease);
+
+  &:hover {
+    color: var(--text-1);
+  }
+}
+
 .tool-name {
   font-size: 0.9rem;
   font-weight: 500;
